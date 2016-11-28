@@ -5,8 +5,8 @@ package com.mroto.jjd311_p4_contentprovider.data;
  */
 
 public abstract class ParamsDb {
-    public static final String DB_NAME="JJD311-Database";
-    public static final String TABLE_NAME="JJD311-Table";
+    public static final String DB_NAME="JJD311_Database";
+    public static final String TABLE_NAME="JJD311_Table";
     public static final int DB_VERSION=1;
     public static final String _ID="_id";
     public static final String STUDENT_NAME="name";
