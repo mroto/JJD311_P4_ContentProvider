@@ -24,13 +24,13 @@ tools:context="com.mroto.jjd311_p4_contentprovider.MainActivity">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txtViewName"
+            android:id="@+id/txt_view_name"
             android:text="@string/txt_view_name_text"
             android:textAppearance="@android:style/TextAppearance.Large"/>
         <EditText
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:id="@+id/edtTxtName"
+            android:id="@+id/edit_text_name"
             android:hint="@string/txt_view_name_hint_text"
             android:background="@android:color/white"
             android:layout_marginLeft="10dp"/>
@@ -40,13 +40,13 @@ tools:context="com.mroto.jjd311_p4_contentprovider.MainActivity">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txtViewAge"
+            android:id="@+id/txt_view_age"
             android:text="@string/txt_view_age_text"
             android:textAppearance="@android:style/TextAppearance.Large"/>
         <EditText
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:id="@+id/edtTxtAge"
+            android:id="@+id/edit_txt_age"
             android:inputType="number"
             android:hint="@string/txt_view_age_hint_text"
             android:background="@android:color/white"
@@ -67,19 +67,19 @@ tools:context="com.mroto.jjd311_p4_contentprovider.MainActivity">
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnQueryDB"
+        android:id="@+id/btn_query_consult"
         android:text="@string/btn_consult_db_text"
         android:textAppearance="@android:style/TextAppearance.Medium"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnAddDB"
+        android:id="@+id/btn_query_add"
         android:text="@string/btn_add_register_db_text"
         android:textAppearance="@android:style/TextAppearance.Medium"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnDeleteDB"
+        android:id="@+id/btn_query_delete"
         android:text="@string/btn_delete_register_db_text"
         android:textAppearance="@android:style/TextAppearance.Medium"/>
 </LinearLayout>
