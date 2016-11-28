@@ -1,8 +1,10 @@
-package com.mroto.jjd311_p4_contentprovider;
+package com.mroto.jjd311_p4_contentprovider.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.mroto.jjd311_p4_contentprovider.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private final static String TAG=MainActivity.class.getSimpleName();
