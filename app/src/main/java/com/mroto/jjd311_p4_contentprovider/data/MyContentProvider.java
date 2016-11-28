@@ -10,7 +10,7 @@ import android.net.Uri;
 //NEW->Other->ContentProvider, NO EXPORT,ENABLED, URI="com.mroto.myprovider"
 public class MyContentProvider extends ContentProvider {
     private static final String TAG=MyContentProvider.class.getSimpleName();
-    private static final String PROVIDER_AUTHORITY="com.mroto.jjd311_p4_contentprovider";
+    private static final String PROVIDER_AUTHORITY="com.mroto.jjd311_p4_contentprovider.data";
     public static final Uri CONTENT_URI =Uri.parse("content://" + MyContentProvider.PROVIDER_AUTHORITY);
 
     MyDatabaseHelper dbHelper;
@@ -48,10 +48,11 @@ public class MyContentProvider extends ContentProvider {
     }
 
     @Override
-    public Cursor query(Uri uri, String[] projection, String selection,
-                        String[] selectionArgs, String sortOrder) {
-        // TODO: Implement this to handle query requests from clients.
-        throw new UnsupportedOperationException("Not yet implemented");
+    public Cursor query(Uri uri, String[] projection, String selection,String[] selectionArgs, String sortOrder) {
+        SQLiteDatabase db = this.dbHelper.getReadableDatabase();
+        Cursor queryCursor = db.query(ParamsDb.TABLE_NAME, projection, selection, selectionArgs, null, null, sortOrder);
+
+        return queryCursor;
     }
 
     @Override

@@ -1,12 +1,14 @@
 package com.mroto.jjd311_p4_contentprovider.activities;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.mroto.jjd311_p4_contentprovider.R;
 import com.mroto.jjd311_p4_contentprovider.data.MyContentProvider;
@@ -38,9 +40,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(view.getId()==R.id.btn_query_add) {
             this.dbAdd();
         }else if(view.getId()==R.id.btn_query_delete) {
-            this.dbDelete();
+            Toast.makeText(this, "Deleted " + this.dbDelete() + " registers.", Toast.LENGTH_LONG).show();
         }else if(view.getId()==R.id.btn_query_consult) {
-            this.dbConsult();
+            Toast.makeText(this, this.dbConsult(), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -56,16 +58,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return insertUri;
         /*
         TO CHECK IN TERMINAL:
-        cd /data/data/com.mroto.jjd311_p4_contentprovider/databases
-        sqlite3 JJD311_Database
-        select * from JJD311_Table;
+        >cd /data/data/com.mroto.jjd311_p4_contentprovider/databases
+        >sqlite3 JJD311_Database
+        >select * from JJD311_Table;
         * */
     }
-    private void dbDelete(){
-        //TODO
+
+    private int dbDelete(){
+        //TODO: MyContentProvider.delete()
+        String where = ParamsDb.STUDENT_NAME + "=? AND " + ParamsDb.STUDENT_AGE + "=?";
+        String [] selectionArgs = {this.editName.getText().toString(), this.editAge.getText().toString()};
+        return getContentResolver().delete(MyContentProvider.CONTENT_URI, where, selectionArgs);
     }
-    private void dbConsult(){
-        MyDatabaseHelper dbHelper= new MyDatabaseHelper(this);
-        dbHelper.getWritableDatabase();
+
+    private String dbConsult(){
+        //null args to select all:
+        Cursor queryCursor = getContentResolver().query(MyContentProvider.CONTENT_URI,null,null,null,null);
+        StringBuilder dbContent = new StringBuilder("");
+        int colIndex = queryCursor.getColumnIndex(ParamsDb._ID);
+        int colName = queryCursor.getColumnIndex(ParamsDb.STUDENT_NAME);
+        int colAge = queryCursor.getColumnIndex(ParamsDb.STUDENT_AGE);
+        while(queryCursor.moveToNext()){
+            dbContent.append("Id=");
+            dbContent.append(queryCursor.getString(colIndex));
+            dbContent.append(", Name=");
+            dbContent.append(queryCursor.getString(colName));
+            dbContent.append(", Age=");
+            dbContent.append(queryCursor.getInt(colAge));
+            dbContent.append("\n");
+        }
+        queryCursor.close();
+        return dbContent.toString();
     }
 }
